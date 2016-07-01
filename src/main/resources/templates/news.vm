@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+  Hello VM.
+  values:$!{values}
+  valuse:${values1}
+  valuse:$!{values1}
+  #foreach ($color in $colors)
+  Colors:$!{foreach.index}/$!{foreach.count} :$!{color}
+  #end
+  #foreach($key in $maps.keySet())
+  Map:$key $!{maps.get($key)};
+  #end
+  #foreach($kv in $maps.entrySet())
+      Map:$!{kv.key} $!{kv.value};
+  #end
+    User:$!{user.name}
+    User:$!{user.getName()}
+  #set($title="nowcoder")
+  Include:#include("header.vm") <br>
+  Parse:#parse("header.vm") <br>
+  #macro(render_color ,$color,$index)
+  Color By Macro  $index,$color
+  #end
+  #foreach($color in $colors)
+    #render_color($color,$foreach.index)
+  #end
+  #set($hello="hello")
+  #set($hworld1="${hello}world")
+  #set($hworld2='${hello}world')
+  hworld1:$hworld1
+    hworld2:$hworld2
+</pre>
+</body>
+</html>
